@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shin Jidai | Calculadora</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="tab">
+            <img id="logo" src="https://encurtador.com.br/i0136" alt="">
+            <button id="tab" class="tablinks" onclick="openTab(event, 'nivel-xp')">Nível e XP</button>
+            <button class="tablinks" onclick="openTab(event, 'distribuir')">Distribuir Pontos</button>
+            <button class="tablinks" onclick="openTab(event, 'espirito')">Espírito</button>
+        </div>
+    </header>
+
+    <div class="content">
+        <div id="nivel-xp" class="tabcontent">
+            <div class="container draggable">
+            <h1>Calculadora de Nível e XP</h1>
+            <!-- Campos da Calculadora de Nível e XP -->
+            <div>
+                <label for="select-mar">Mar:</label>
+                <select id="select-mar">
+                    <option value="EB">East Blue</option>
+                    <option value="GL">Grand Line</option>
+                    <option value="NM">Novo Mundo</option>
+                </select>
+            </div>
+            <div>
+                <label for="nivel-atual">Nível Atual:</label>
+                <input type="number" id="nivel-atual">
+            </div>
+            <div>
+                <label for="xp-recebido">XP Recebido:</label>
+                <input type="number" id="xp-recebido">
+            </div>
+            <div>
+                <label for="xp-guardado">XP Guardado:</label>
+                <input type="number" id="xp-guardado">
+            </div>
+            <button id="calcular">Calcular Nível</button>
+            <div id="resultado-container" class="resultado-container"></div>
+        </div>
+    </div>
+
+    <div id="espirito" class="tabcontent">
+        <div class="container draggable">
+            <h1>Calculadora de Espírito</h1>
+            <!-- Campos da Calculadora de Espiríto -->
+            <div>
+                <label for="forca">Força:</label>
+                <input type="number" id="forca">
+            </div>
+            <div>
+                <label for="resistencia">Resistência:</label>
+                <input type="number" id="resistencia">
+            </div>
+            <div>
+                <label for="velocidade">Velocidade:</label>
+                <input type="number" id="velocidade">
+            </div>
+            <button id="calcular-espirito">Calcular Espírito</button>
+            <div id="resultado-espirito" class="resultado-container"></div>
+        </div>
+    </div>
+
+    <div id="distribuir" class="tabcontent">
+        <div class="container draggable">
+            <h1>Distribuição de Pontos</h1>
+            <!-- Campos da Distribuição de Pontos -->
+            <div>
+                <label for="quantidade-pontos">Quantidade Total de Pontos:</label>
+                <input type="number" id="quantidade-pontos">
+            </div>
+            <div>
+                <label for="porcentagem-forca">Porcentagem para Força:</label>
+                <input type="number" id="porcentagem-forca">
+            </div>
+            <div>
+                <label for="porcentagem-resistencia">Porcentagem para Resistência:</label>
+                <input type="number" id="porcentagem-resistencia">
+            </div>
+            <div>
+                <label for="porcentagem-velocidade">Porcentagem para Velocidade:</label>
+                <input type="number" id="porcentagem-velocidade">
+            </div>
+            <button id="distribuir-pontos">Distribuir Pontos</button>
+            <div id="resultado-distribuicao" class="resultado-container"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
