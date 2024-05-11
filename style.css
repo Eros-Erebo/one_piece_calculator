@@ -27,7 +27,7 @@ header {
     }
     /* Ajuste de margem do primeiro botão quando o logo está oculto */
     .tab button:first-child {
-        margin-left: 20px; /* Ajuste conforme necessário */
+        margin-left: 100px; /* Ajuste conforme necessário */
     }
 }
 
