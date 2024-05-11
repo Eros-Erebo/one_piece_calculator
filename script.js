@@ -1,8 +1,8 @@
 document.getElementById("calcular").addEventListener("click", function() {
     var local = document.getElementById("select-mar").value;
-    var nivelAtual = parseInt(document.getElementById("nivel-atual").value);
-    var xpRecebido = parseInt(document.getElementById("xp-recebido").value);
-    var xpGuardado = parseInt(document.getElementById("xp-guardado").value);
+    var nivelAtual = parseInt(document.getElementById("nivel-atual").value) || 0; // Adicione "|| 0" para definir como 0 se estiver vazio
+    var xpRecebido = parseInt(document.getElementById("xp-recebido").value) || 0; // Adicione "|| 0" para definir como 0 se estiver vazio
+    var xpGuardado = parseInt(document.getElementById("xp-guardado").value) || 0; // Adicione "|| 0" para definir como 0 se estiver vazio
     var xpTotal = xpRecebido + xpGuardado;
 
     var resultado = calcularUpEPontos(nivelAtual, xpTotal, local);
@@ -24,9 +24,9 @@ document.getElementById("calcular").addEventListener("click", function() {
 });
 
 document.getElementById("calcular-espirito").addEventListener("click", function() {
-    var forca = parseInt(document.getElementById("forca").value);
-    var resistencia = parseInt(document.getElementById("resistencia").value);
-    var velocidade = parseInt(document.getElementById("velocidade").value);
+    var forca = parseInt(document.getElementById("forca").value) || 0; // Adicione "|| 0" para definir como 0 se estiver vazio
+    var resistencia = parseInt(document.getElementById("resistencia").value) || 0; // Adicione "|| 0" para definir como 0 se estiver vazio
+    var velocidade = parseInt(document.getElementById("velocidade").value) || 0; // Adicione "|| 0" para definir como 0 se estiver vazio
     
     var espirito = calcularEspirito(forca, resistencia, velocidade);
 
@@ -39,10 +39,10 @@ document.getElementById("calcular-espirito").addEventListener("click", function(
 });
 
 document.getElementById("distribuir-pontos").addEventListener("click", function() {
-    var quantidadeTotalPontos = parseInt(document.getElementById("quantidade-pontos").value);
-    var porcentagemForca = parseInt(document.getElementById("porcentagem-forca").value);
-    var porcentagemResistencia = parseInt(document.getElementById("porcentagem-resistencia").value);
-    var porcentagemVelocidade = parseInt(document.getElementById("porcentagem-velocidade").value);
+    var quantidadeTotalPontos = parseInt(document.getElementById("quantidade-pontos").value) || 0; // Adicione "|| 0" para definir como 0 se estiver vazio
+    var porcentagemForca = parseInt(document.getElementById("porcentagem-forca").value) || 0; // Adicione "|| 0" para definir como 0 se estiver vazio
+    var porcentagemResistencia = parseInt(document.getElementById("porcentagem-resistencia").value) || 0; // Adicione "|| 0" para definir como 0 se estiver vazio
+    var porcentagemVelocidade = parseInt(document.getElementById("porcentagem-velocidade").value) || 0; // Adicione "|| 0" para definir como 0 se estiver vazio
 
     var distribuicao = distribuirPontos(quantidadeTotalPontos, porcentagemForca, porcentagemResistencia, porcentagemVelocidade);
 
