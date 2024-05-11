@@ -44,6 +44,7 @@ header {
     transition: 0.3s;
     font-size: 18px;
     margin: 0 10px;
+    align-items: center;
 }
 
 .tab button:hover {
