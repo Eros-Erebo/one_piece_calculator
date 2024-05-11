@@ -101,6 +101,18 @@ button {
     box-sizing: border-box;
 }
 
+#calcular-espirito{
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+#distribuir-pontos{
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
 button:hover {
     background-color: #416f96;
 }
