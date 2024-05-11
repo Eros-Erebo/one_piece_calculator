@@ -16,7 +16,7 @@ header {
 
 @media only screen and (max-width: 2000px) and (orientation: portrait) {
     #logo {
-        display: none;
+        opacity: 0;
     }
 }
 
