@@ -24,7 +24,7 @@ header {
 }
 
 /* CSS para dispositivos maiores, como computadores */
-@media (min-width: 2000px) {
+@media (min-width: 1030px) {
     #logo {
         display: inline-block;
         position: absolute; 
