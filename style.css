@@ -16,24 +16,6 @@ header {
     text-align: center;
 }
 
-/* CSS para dispositivos móveis */
-@media (max-width: 1030px) {
-    #logo {
-        display: none;
-    }
-}
-
-/* CSS para dispositivos maiores, como computadores */
-@media (min-width: 1030px) {
-    #logo {
-        display: inline-block;
-        position: absolute; 
-        left: 20px; 
-        top: 40%; 
-        transform: translateY(-50%);
-    }
-}
-
 #logo{
     position: absolute; 
     left: 20px;
