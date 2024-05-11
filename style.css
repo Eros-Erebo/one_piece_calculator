@@ -17,7 +17,7 @@ header {
 }
 
 /* CSS para dispositivos móveis */
-@media (max-width: 2000px) {
+@media (max-width: 1500px) {
     #logo {
         display: none;
     }
