@@ -3,7 +3,7 @@ body {
     margin: 0;
     padding: 0;
     background-image: url(https://images8.alphacoders.com/739/thumb-1920-739448.png);
-    background-size: contain;
+    background-size: cover;
     background-attachment: fixed;
     background-position: center;
 }
@@ -14,12 +14,6 @@ header {
     color: #fff;
     padding: 20px 0;
     text-align: center;
-}
-
-@media only screen and (max-width: 767px) and (orientation: portrait) {
-    #logo {
-        display: none;
-    }
 }
 
 #logo{
