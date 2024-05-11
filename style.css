@@ -14,6 +14,12 @@ header {
     text-align: center;
 }
 
+@media only screen and (orientation: portrait) {
+    #logo {
+        display: none;
+    }
+}
+
 #logo{
     float: inline-start;
     margin-left: 50px;
