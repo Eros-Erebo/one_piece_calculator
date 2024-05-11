@@ -19,7 +19,15 @@ header {
 /* CSS para dispositivos móveis */
 @media (max-width: 2000px) {
     #logo {
-        display: none;
+        display: none; /* Oculta o logo em dispositivos com largura de tela até 1400 pixels */
+    }
+    /* Ajuste de margem dos botões no cabeçalho quando o logo está oculto */
+    .tab button {
+        margin-left: 10px; /* Reduz a margem esquerda dos botões */
+    }
+    /* Ajuste de margem do primeiro botão quando o logo está oculto */
+    .tab button:first-child {
+        margin-left: 20px; /* Ajuste conforme necessário */
     }
 }
 
