@@ -3,21 +3,42 @@ body {
     margin: 0;
     padding: 0;
     background-image: url(https://images8.alphacoders.com/739/thumb-1920-739448.png);
-    background-size: cover;
+    background-size: contain;
     background-attachment: fixed;
+    background-position: center;
 }
 
 header {
+    position: relative;
     background-color: #1e507470;
     color: #fff;
     padding: 20px 0;
     text-align: center;
 }
 
+/* CSS para dispositivos móveis */
+@media (max-width: 1030px) {
+    #logo {
+        display: none;
+    }
+}
+
+/* CSS para dispositivos maiores, como computadores */
+@media (min-width: 2000px) {
+    #logo {
+        display: inline-block;
+        position: absolute; 
+        left: 20px; 
+        top: 40%; 
+        transform: translateY(-50%);
+    }
+}
+
 #logo{
-    float: inline-start;
-    margin-left: 50px;
-    margin-top: 5px;
+    position: absolute; 
+    left: 20px;
+    top: 40%; 
+    transform: translateY(-50%);
 }
 
 #tab{
