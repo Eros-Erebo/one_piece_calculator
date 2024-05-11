@@ -9,7 +9,6 @@ body {
 }
 
 header {
-    position: relative;
     background-color: #1e507470;
     color: #fff;
     padding: 20px 0;
@@ -17,10 +16,9 @@ header {
 }
 
 #logo{
-    position: absolute; 
-    left: 20px;
-    top: 40%; 
-    transform: translateY(-50%);
+    float: inline-start;
+    margin-left: 50px;
+    margin-top: 5px;
 }
 
 #tab{
