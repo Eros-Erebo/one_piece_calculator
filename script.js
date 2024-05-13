@@ -1,4 +1,4 @@
-ocument.getElementById("calcular").addEventListener("click", function() {
+document.getElementById("calcular").addEventListener("click", function() {
     var local = document.getElementById("select-mar").value;
     var nivelAtual = parseInt(document.getElementById("nivel-atual").value) || 0; // Adicione "|| 0" para definir como 0 se estiver vazio
     var xpRecebido = parseInt(document.getElementById("xp-recebido").value) || 0; // Adicione "|| 0" para definir como 0 se estiver vazio
@@ -9,13 +9,13 @@ ocument.getElementById("calcular").addEventListener("click", function() {
 
     var output = "<h1>Resultado</h1>";
     output += "<div><label>Nível atual: </label><span>" + resultado[0] + "</span></div>";
-    if (resultado[0] === nivelAtual) {
-        output += "<div><label>Quantidade de pontos a serem distribuídos: </label><span>0</span></div>";
-        output += "<div><label>Relação de XP Atual: [</label><span>" + xpTotal + "/" + resultado[1] + "]</span></div>";
-    } else {
-        output += "<div><label>Quantidade de vezes upadas: </label><span>" + resultado[4] + "</span></div>";
-        output += "<div><label>Pontos a serem distribuídos: </label><span>" + resultado[1] + "</span></div>";
+    output += "<div><label>Quantidade de vezes upadas: </label><span>" + resultado[4] + "</span></div>";
+    output += "<div><label>Pontos a serem distribuídos: </label><span>" + resultado[1] + "</span></div>";
+
+    if (resultado[2] > 0) {
         output += "<div><label>Relação de XP Atual: [</label><span>" + resultado[3] + "/" + resultado[2] + "]</span></div>";
+    } else {
+        output += "<div><label>XP que sobrou sem conseguir ser usado junto ao XP do nível atual: </label><span>" + resultado[2] + "</span></div>";
     }
 
     var resultadoContainer = document.getElementById("resultado-container");
@@ -126,17 +126,17 @@ function distribuirPontos(quantidadeTotalPontos, porcentagemForca, porcentagemRe
 
 // Função para alternar entre as abas
 function openTab(evt, tabName) {
-    var i, tabcontent, tablinks;
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-    }
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-    }
-    document.getElementById(tabName).style.display = "block";
-    evt.currentTarget.className += " active";
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " active";
 }
 
 document.getElementsByClassName("tablinks")[0].click();
