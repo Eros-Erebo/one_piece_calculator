@@ -1,21 +1,21 @@
 document.getElementById("calcular").addEventListener("click", function() {
     var local = document.getElementById("select-mar").value;
-    var nivelAtual = parseInt(document.getElementById("nivel-atual").value) || 0; // Adicione "|| 0" para definir como 0 se estiver vazio
-    var xpRecebido = parseInt(document.getElementById("xp-recebido").value) || 0; // Adicione "|| 0" para definir como 0 se estiver vazio
-    var xpGuardado = parseInt(document.getElementById("xp-guardado").value) || 0; // Adicione "|| 0" para definir como 0 se estiver vazio
+    var nivelAtual = parseInt(document.getElementById("nivel-atual").value) || 0;
+    var xpRecebido = parseInt(document.getElementById("xp-recebido").value) || 0;
+    var xpGuardado = parseInt(document.getElementById("xp-guardado").value) || 0;
     var xpTotal = xpRecebido + xpGuardado;
 
     var resultado = calcularUpEPontos(nivelAtual, xpTotal, local);
 
     var output = "<h1>Resultado</h1>";
     output += "<div><label>Nível atual: </label><span>" + resultado[0] + "</span></div>";
-    output += "<div><label>Quantidade de vezes upadas: </label><span>" + resultado[4] + "</span></div>";
+    output += "<div><label>Quantidade de vezes upadas: </label><span>" + (resultado[4] || 0) + "</span></div>";
     output += "<div><label>Pontos a serem distribuídos: </label><span>" + resultado[1] + "</span></div>";
 
     if (resultado[2] > 0) {
-        output += "<div><label>Relação de XP Atual: [</label><span>" + resultado[3] + "/" + resultado[2] + "]</span></div>";
+        output += "<div><label>Relação de XP Atual: [" + xpTotal + "/" + resultado[2] + "]</label></div>";
     } else {
-        output += "<div><label>XP que sobrou sem conseguir ser usado junto ao XP do nível atual: </label><span>" + resultado[2] + "</span></div>";
+        output += "<div><label>XP que sobrou sem conseguir ser usado junto ao XP do nível atual: </label><span>" + (resultado[3] || 0) + "</span></div>";
     }
 
     var resultadoContainer = document.getElementById("resultado-container");
@@ -24,9 +24,9 @@ document.getElementById("calcular").addEventListener("click", function() {
 });
 
 document.getElementById("calcular-espirito").addEventListener("click", function() {
-    var forca = parseInt(document.getElementById("forca").value) || 0; // Adicione "|| 0" para definir como 0 se estiver vazio
-    var resistencia = parseInt(document.getElementById("resistencia").value) || 0; // Adicione "|| 0" para definir como 0 se estiver vazio
-    var velocidade = parseInt(document.getElementById("velocidade").value) || 0; // Adicione "|| 0" para definir como 0 se estiver vazio
+    var forca = parseInt(document.getElementById("forca").value) || 0;
+    var resistencia = parseInt(document.getElementById("resistencia").value) || 0;
+    var velocidade = parseInt(document.getElementById("velocidade").value) || 0;
     
     var espirito = calcularEspirito(forca, resistencia, velocidade);
 
@@ -39,10 +39,10 @@ document.getElementById("calcular-espirito").addEventListener("click", function(
 });
 
 document.getElementById("distribuir-pontos").addEventListener("click", function() {
-    var quantidadeTotalPontos = parseInt(document.getElementById("quantidade-pontos").value) || 0; // Adicione "|| 0" para definir como 0 se estiver vazio
-    var porcentagemForca = parseInt(document.getElementById("porcentagem-forca").value) || 0; // Adicione "|| 0" para definir como 0 se estiver vazio
-    var porcentagemResistencia = parseInt(document.getElementById("porcentagem-resistencia").value) || 0; // Adicione "|| 0" para definir como 0 se estiver vazio
-    var porcentagemVelocidade = parseInt(document.getElementById("porcentagem-velocidade").value) || 0; // Adicione "|| 0" para definir como 0 se estiver vazio
+    var quantidadeTotalPontos = parseInt(document.getElementById("quantidade-pontos").value) || 0;
+    var porcentagemForca = parseInt(document.getElementById("porcentagem-forca").value) || 0;
+    var porcentagemResistencia = parseInt(document.getElementById("porcentagem-resistencia").value) || 0;
+    var porcentagemVelocidade = parseInt(document.getElementById("porcentagem-velocidade").value) || 0;
 
     var distribuicao = distribuirPontos(quantidadeTotalPontos, porcentagemForca, porcentagemResistencia, porcentagemVelocidade);
 
@@ -57,7 +57,6 @@ document.getElementById("distribuir-pontos").addEventListener("click", function(
 });
 
 function calcularUpEPontos(nivelAtual, xpTotal, local) {
-    // Lista de níveis e xp correspondentes
     var niveis_xp = {
         1: 150, 2: 160, 3: 170, 4: 180, 5: 200, 6: 210, 7: 220, 8: 240, 9: 250, 10: 260,
         11: 280, 12: 300, 13: 310, 14: 330, 15: 350, 16: 360, 17: 380, 18: 400, 19: 420, 20: 440,
@@ -79,14 +78,13 @@ function calcularUpEPontos(nivelAtual, xpTotal, local) {
         171: 9160, 172: 9250, 173: 9340, 174: 9460, 175: 9540, 176: 9670, 177: 9790, 178: 9870, 179: 9940, 180: 10050,
         181: 10140, 182: 10260, 183: 10340, 184: 10440, 185: 10550, 186: 10650, 187: 10750, 188: 10860, 189: 10960, 190: 11060,
         191: 11170, 192: 11280, 193: 11380, 194: 11490, 195: 11600, 196: 11700, 197: 11810, 198: 11920, 199: 12030, 200: 12140
-    };    
+    };
 
     var nivel_alcancado = nivelAtual;
     var xp_atual = niveis_xp[nivelAtual];
     var pontos_recebidos = 0;
     var vezes_upadas = 0;
 
-    // Verifica se o XP total fornecido é suficiente para passar para o próximo nível
     while (xpTotal >= xp_atual) {
         nivel_alcancado += 1;
         xpTotal -= xp_atual;
@@ -101,13 +99,10 @@ function calcularUpEPontos(nivelAtual, xpTotal, local) {
         }
     }
 
-    // Calcula o XP faltante para o próximo nível sem deduzir o XP atual do próximo nível
     var xp_faltante_para_proximo_nivel = niveis_xp[nivel_alcancado];
 
-    // Se o XP total não for suficiente para o próximo nível, retorna o nível atual
     if (nivel_alcancado === nivelAtual) {
-        var xp_sobrando = xp_atual - xpTotal;
-        return [nivelAtual, pontos_recebidos, xp_sobrando, vezes_upadas];
+        return [nivelAtual, pontos_recebidos, xp_atual, vezes_upadas];
     }
 
     return [nivel_alcancado, pontos_recebidos, xp_faltante_para_proximo_nivel, xpTotal, vezes_upadas];
@@ -124,19 +119,18 @@ function distribuirPontos(quantidadeTotalPontos, porcentagemForca, porcentagemRe
     return [pontosForca, pontosResistencia, pontosVelocidade];
 }
 
-// Função para alternar entre as abas
 function openTab(evt, tabName) {
-  var i, tabcontent, tablinks;
-  tabcontent = document.getElementsByClassName("tabcontent");
-  for (i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
-  tablinks = document.getElementsByClassName("tablinks");
-  for (i = 0; i < tablinks.length; i++) {
-    tablinks[i].className = tablinks[i].className.replace(" active", "");
-  }
-  document.getElementById(tabName).style.display = "block";
-  evt.currentTarget.className += " active";
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.className += " active";
 }
 
 document.getElementsByClassName("tablinks")[0].click();
