@@ -10,8 +10,9 @@ document.getElementById("calcular").addEventListener("click", function() {
     var output = "<h1>Resultado</h1>";
     output += "<div><label>Nível atual: </label><span>" + resultado[0] + "</span></div>";
     if (resultado[0] === nivelAtual) {
+        var xpNivelAtual = resultado[0] > 0 ? niveis_xp[resultado[0]] : 0; // Adicionado para obter o XP do nível atual
         output += "<div><label>Quantidade de pontos a serem distribuídos: </label><span>0</span></div>";
-        output += "<div><label>Relação de XP Atual: [</label><span>" + xpTotal + "/" + resultado[1] + "]</span></div>";
+        output += "<div><label>Relação de XP Atual: [</label><span>" + xpTotal + "/" + xpNivelAtual + "]</span></div>";
     } else {
         output += "<div><label>Quantidade de vezes upadas: </label><span>" + resultado[4] + "</span></div>";
         output += "<div><label>Pontos a serem distribuídos: </label><span>" + resultado[1] + "</span></div>";
