@@ -106,10 +106,8 @@ function calcularUpEPontos(nivelAtual, xpTotal, local) {
 
     // Se o XP total não for suficiente para o próximo nível, retorna o nível atual
     if (nivel_alcancado === nivelAtual) {
-        var xp_sobrando = xpTotal;
-        var vezes_upadas = 0;
-        var xp_atual = [xpTotal / niveis_xp[nivelAtual]];
-        return [nivelAtual, pontos_recebidos, xp_sobrando, vezes_upadas, xp_atual];
+        var xp_sobrando = xp_atual - xpTotal;
+        return [nivelAtual, pontos_recebidos, xp_sobrando, vezes_upadas];
     }
 
     return [nivel_alcancado, pontos_recebidos, xp_faltante_para_proximo_nivel, xpTotal, vezes_upadas];
