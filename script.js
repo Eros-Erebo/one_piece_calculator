@@ -58,3 +58,31 @@ function calcularUpEPontos(nivelAtual, xpTotal, local) {
 
     return [nivel_alcancado, pontos_recebidos, xp_faltante_para_proximo_nivel, xpTotal, vezes_upadas];
 }
+
+function calcularEspirito(forca, resistencia, velocidade) {
+    return (forca * 0.4) + (resistencia * 0.3) + (velocidade * 0.3);
+}
+
+function distribuirPontos(quantidadeTotalPontos, porcentagemForca, porcentagemResistencia, porcentagemVelocidade) {
+    var pontosForca = Math.round(quantidadeTotalPontos * (porcentagemForca / 100));
+    var pontosResistencia = Math.round(quantidadeTotalPontos * (porcentagemResistencia / 100));
+    var pontosVelocidade = Math.round(quantidadeTotalPontos * (porcentagemVelocidade / 100));
+    return [pontosForca, pontosResistencia, pontosVelocidade];
+}
+
+// Função para alternar entre as abas
+function openTab(evt, tabName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+
+document.getElementsByClassName("tablinks")[0].click();
