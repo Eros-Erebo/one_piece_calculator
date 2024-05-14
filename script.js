@@ -11,9 +11,10 @@ document.getElementById("calcular").addEventListener("click", function() {
     output += "<div><label>Nível atual: </label><span>" + resultado[0] + "</span></div>";
     output += "<div><label>Quantidade de vezes upadas: </label><span>" + (resultado[4] || 0) + "</span></div>";
     output += "<div><label>Pontos a serem distribuídos: </label><span>" + resultado[1] + "</span></div>";
-
-    if (resultado[2] > 0) {
-        output += "<div><label>Relação de XP Atual: [" + xpTotal + "/" + resultado[2] + "]</label></div>";
+ if (resultado[2] > 0) {
+        var xpTotalUpado = xpTotal - resultado[3];
+        var xpRestante = xpTotal - xpTotalUpado;
+        output += "<div><label>Relação de XP Atual: [" + xpRestante + "/" + resultado[2] + "]</label></div>";
     } else {
         output += "<div><label>XP que sobrou sem conseguir ser usado junto ao XP do nível atual: </label><span>" + (resultado[3] || 0) + "</span></div>";
     }
