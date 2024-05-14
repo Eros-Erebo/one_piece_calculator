@@ -91,14 +91,17 @@ function calcularUpEPontos(nivelAtual, xpTotal, local) {
         xpTotal -= xp_atual;
         xp_atual = niveis_xp[nivel_alcancado];
         vezes_upadas += 1;
-        if (local === "EB") {
-            pontos_recebidos += 30;
+        if (local === "EB" || (local === "GL" && nivel_alcancado <= 50)) {
+            pontos_recebidos += 30; 
+        } else if (local === "NM" && nivel_alcancado <= 100) {
+            pontos_recebidos += 60
         } else if (local === "GL") {
             pontos_recebidos += 60;
         } else {
             pontos_recebidos += 120;
         }
     }
+
 
     var xp_faltante_para_proximo_nivel = niveis_xp[nivel_alcancado];
 
