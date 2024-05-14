@@ -15,8 +15,8 @@ document.getElementById("calcular").addEventListener("click", function() {
         var xpTotalUpado = xpTotal - resultado[3];
         var xpRestante = xpTotal - xpTotalUpado;
         output += "<div><label>Relação de XP Atual: [" + xpRestante + "/" + resultado[2] + "]</label></div>";
-    } else {
-        output += "<div><label>XP que sobrou sem conseguir ser usado junto ao XP do nível atual: </label><span>" + (resultado[3] || 0) + "</span></div>";
+ } else {
+        output += "<div><label>Relação de XP Atual: </label><span>" + xpTotal + "</span></div>";
     }
 
     var resultadoContainer = document.getElementById("resultado-container");
@@ -103,7 +103,7 @@ function calcularUpEPontos(nivelAtual, xpTotal, local) {
     var xp_faltante_para_proximo_nivel = niveis_xp[nivel_alcancado];
 
     if (nivel_alcancado === nivelAtual) {
-        return [nivelAtual, pontos_recebidos, xp_atual, vezes_upadas];
+        return [nivelAtual, pontos_recebidos, xp_atual, xpTotal, vezes_upadas];
     }
 
     return [nivel_alcancado, pontos_recebidos, xp_faltante_para_proximo_nivel, xpTotal, vezes_upadas];
