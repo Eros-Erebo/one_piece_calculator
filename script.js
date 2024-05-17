@@ -1,8 +1,8 @@
 document.getElementById("calcular").addEventListener("click", function() {
     var local = document.getElementById("select-mar").value;
-    var nivelAtual = parseInt(document.getElementById("nivel-atual").value) || 0;
-    var xpRecebido = parseInt(document.getElementById("xp-recebido").value) || 0;
-    var xpGuardado = parseInt(document.getElementById("xp-guardado").value) || 0;
+    var nivelAtual = parseInt(document.getElementById("nivel-atual").value.replace(/\D/g, '')) || 0;
+    var xpRecebido = parseInt(document.getElementById("xp-recebido").value.replace(/\D/g, '')) || 0;
+    var xpGuardado = parseInt(document.getElementById("xp-guardado").value.replace(/\D/g, '')) || 0;
     var xpTotal = xpRecebido + xpGuardado;
 
     var resultado = calcularUpEPontos(nivelAtual, xpTotal, local);
@@ -11,11 +11,11 @@ document.getElementById("calcular").addEventListener("click", function() {
     output += "<div><label>Nível atual: </label><span>" + resultado[0] + "</span></div>";
     output += "<div><label>Quantidade de vezes upadas: </label><span>" + (resultado[4] || 0) + "</span></div>";
     output += "<div><label>Pontos a serem distribuídos: </label><span>" + resultado[1] + "</span></div>";
- if (resultado[2] > 0) {
+    if (resultado[2] > 0) {
         var xpTotalUpado = xpTotal - resultado[3];
         var xpRestante = xpTotal - xpTotalUpado;
         output += "<div><label>Relação de XP Atual: [" + xpRestante + "/" + resultado[2] + "]</label></div>";
- } else {
+    } else {
         output += "<div><label>Relação de XP Atual: </label><span>" + xpTotal + "</span></div>";
     }
 
@@ -25,9 +25,9 @@ document.getElementById("calcular").addEventListener("click", function() {
 });
 
 document.getElementById("calcular-espirito").addEventListener("click", function() {
-    var forca = parseInt(document.getElementById("forca").value) || 0;
-    var resistencia = parseInt(document.getElementById("resistencia").value) || 0;
-    var velocidade = parseInt(document.getElementById("velocidade").value) || 0;
+    var forca = parseInt(document.getElementById("forca").value.replace(/\D/g, '')) || 0;
+    var resistencia = parseInt(document.getElementById("resistencia").value.replace(/\D/g, '')) || 0;
+    var velocidade = parseInt(document.getElementById("velocidade").value.replace(/\D/g, '')) || 0;
     
     var espirito = calcularEspirito(forca, resistencia, velocidade);
 
@@ -40,10 +40,10 @@ document.getElementById("calcular-espirito").addEventListener("click", function(
 });
 
 document.getElementById("distribuir-pontos").addEventListener("click", function() {
-    var quantidadeTotalPontos = parseInt(document.getElementById("quantidade-pontos").value) || 0;
-    var porcentagemForca = parseInt(document.getElementById("porcentagem-forca").value) || 0;
-    var porcentagemResistencia = parseInt(document.getElementById("porcentagem-resistencia").value) || 0;
-    var porcentagemVelocidade = parseInt(document.getElementById("porcentagem-velocidade").value) || 0;
+    var quantidadeTotalPontos = parseInt(document.getElementById("quantidade-pontos").value.replace(/\D/g, '')) || 0;
+    var porcentagemForca = parseInt(document.getElementById("porcentagem-forca").value.replace(/\D/g, '')) || 0;
+    var porcentagemResistencia = parseInt(document.getElementById("porcentagem-resistencia").value.replace(/\D/g, '')) || 0;
+    var porcentagemVelocidade = parseInt(document.getElementById("porcentagem-velocidade").value.replace(/\D/g, '')) || 0;
 
     var distribuicao = distribuirPontos(quantidadeTotalPontos, porcentagemForca, porcentagemResistencia, porcentagemVelocidade);
 
@@ -101,7 +101,6 @@ function calcularUpEPontos(nivelAtual, xpTotal, local) {
             pontos_recebidos += 120;
         }
     }
-
 
     var xp_faltante_para_proximo_nivel = niveis_xp[nivel_alcancado];
 
