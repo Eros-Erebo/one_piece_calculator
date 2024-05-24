@@ -23,7 +23,7 @@ header {
 #logo{
     float: inline-start;
     margin-left: 50px;
-    margin-bottom: 8px;
+    padding-bottom: 5px;
 }
 
 #tab{
